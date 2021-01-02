@@ -6,6 +6,7 @@ using Domain.NetStandard;
 using Domain.NetStandard.Logic;
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Infraestructure.NetStandard
@@ -28,15 +29,27 @@ namespace Infraestructure.NetStandard
          })); 
       }
 
-      public Response<PersonDTO> GetPerson(GetPersonQuery query)
+      public PersonDTO GetPerson(GetPersonQuery query)
       {
-         throw new System.NotImplementedException();
+         var person = PeopleDB.Users.FirstOrDefault(p => p.Id == query.Id);
+
+         return new PersonDTO
+         {
+            FirstName = person.FirstName
+         };
       }
    }
 
 
    public static class PeopleDB
    {
-      public static List<Person> Users = new List<Person>();
+      public static List<Person> Users = new List<Person>
+      {
+         new Person
+         {
+            Id = 1,
+            FirstName = "Alberto"
+         }
+      };
    }
 }

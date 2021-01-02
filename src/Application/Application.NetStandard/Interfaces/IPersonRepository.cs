@@ -10,6 +10,6 @@ namespace Application.NetStandard.Interfaces
    {
       Task<Response<PersonDTO>> AddAsync(CreatePersonCommand query);
 
-      Response<PersonDTO> GetPerson(GetPersonQuery query);
+      PersonDTO GetPerson(GetPersonQuery query);
    }
 }

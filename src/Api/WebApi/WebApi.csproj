@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Application\Application.NetStandard\Application.NetStandard.csproj" />
+    <ProjectReference Include="..\..\Infraestructure\Infraestructure.NetStandard\Infraestructure.NetStandard.csproj" />
   </ItemGroup>
 
 

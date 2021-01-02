@@ -26,7 +26,19 @@ namespace Application.NetStandard.Person.Queries
 
       public Task<Response<PersonDTO>> Handle(GetPersonQuery request, CancellationToken cancellationToken)
       {
-         return Task.FromResult(_repository.GetPerson(request));
+         var person = _repository.GetPerson(request);
+
+         if(person == null)
+         {
+            return Task.FromResult(Response.Fail<PersonDTO>("Error returning Person"));
+         }
+
+         if (string.IsNullOrWhiteSpace(person.FirstName))
+         {
+            return Task.FromResult(Response.Fail<PersonDTO>("Error returning Person"));
+         }
+
+         return Task.FromResult(Response.Ok(person));
       }
    }
 }
