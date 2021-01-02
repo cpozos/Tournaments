@@ -1,6 +1,7 @@
 ﻿using Application.NetStandard;
 using Application.NetStandard.Person;
 using Application.NetStandard.Person.Commands;
+using Application.NetStandard.Person.Queries;
 using Domain.NetStandard.Logic;
 
 using MediatR;
@@ -28,6 +29,15 @@ namespace WebApi.Controllers
          {
             FirstName = "Carlos",
             LastName = "Pozos"
+         });
+      }
+
+      [HttpGet]
+      public Task<Response<PersonDTO>> Get(int id)
+      {
+         return _mediator.Send(new GetPersonQuery
+         {
+            Id = id
          });
       }
    }
