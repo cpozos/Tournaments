@@ -13,6 +13,7 @@ using Domain.NetStandard.Logic;
 using Domain.NetStandard.Entities.Organizers;
 using Domain.NetStandard.Entities.Games.FIFA;
 using Domain.NetStandard.Entities.Players;
+using Application.NetStandard.FIFA.Tournament.Commands;
 
 namespace Infraestructure.NetStandard.FIFA
 {
@@ -83,48 +84,67 @@ namespace Infraestructure.NetStandard.FIFA
          return tor;
       }
 
-      public AppResult Add(TournamentDTO tournament)
+      public TournamentDTO Add(CreateTournamentCommand request)
       {
-         var result = new AppResult
-         {
-            Result = false
-         };
-
          // Validates entity
-         if (tournament == null || tournament.Teams.Count == 0)
+         if (request == null || request.Teams.Count == 0)
          {
-            return result;
+            return null;
          }
 
-
-         foreach (var equipo in tournament.Teams)
+         // Mapping
+         var instance = new FIFATournament
          {
-            foreach (var equipo2 in tournament.Teams)
+            Title = request.Title,
+            TimeCreated = DateTime.Now
+         };
+
+         foreach (var equipo in request.Teams)
+         {
+            var team = new FIFATeam
             {
-               if (!equipo.Equals(equipo2))
+               Name = equipo.Name
+            };
+
+            foreach (var equipo2 in request.Teams)
+            {
+               var team2 = new FIFATeam
+               {
+                  Name = equipo2.Name
+               };
+
+               if (!team.Equals(team2))
                {
                   var partido = new FIFAMatch
                   {
-                     Local = equipo,
-                     Visitante = equipo2
+                     Local = team,
+                     Visitante = team2
                   };
 
-                  if (!tournament.Matches.Any(par => par.Equals(partido)))
+                  if (!instance.Matches.Any(par => par.Equals(partido)))
                   {
-                     tournament.Matches.Add(partido);
+                     instance.Matches.Add(partido);
                   }
                }
             }
          }
 
-         if (tournament.Matches.Count < 1)
+         if (instance.Matches.Count < 1)
          {
-            return result;
+            return null;
          }
 
-         result = Save(tournament.Matches);
 
-         return result;
+         TournDB.Tournaments.Add(instance);
+
+         return new TournamentDTO
+         {
+            Title = instance.Title,
+            Matches = instance.Matches,
+         };
+
+         //result = Save(tournament.Matches);
+         //return result;
       }
 
       public AppResult Save(FIFAMatch match) => Save(new List<FIFAMatch> { match });
@@ -159,5 +179,11 @@ namespace Infraestructure.NetStandard.FIFA
 
          return result;
       }
+   }
+
+   public class TournDB
+   {
+      public static List<FIFATournament> Tournaments { get; set; } = new List<FIFATournament>();
+
    }
 }

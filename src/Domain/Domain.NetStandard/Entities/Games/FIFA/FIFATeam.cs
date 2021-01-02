@@ -5,8 +5,11 @@ namespace Domain.NetStandard.Entities.Games.FIFA
 {
    public class FIFATeam
    {
-      public string Name { get; set; }
+      public int Id { get; set; }
+      public int TournamentId { get; set; }
+      public int OwnerId { get; set; }
       public PersonPlayer Owner { get; set; }
+      public string Name { get; set; }
       public FIFATeamStatistics Statistics { get; set; }
       public FIFATeam()
       {
