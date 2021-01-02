@@ -135,7 +135,7 @@ namespace Infraestructure.NetStandard.FIFA
          }
 
 
-         TournDB.Tournaments.Add(instance);
+         TournDB.Items.Add(instance);
 
          return new TournamentDTO
          {
@@ -181,9 +181,7 @@ namespace Infraestructure.NetStandard.FIFA
       }
    }
 
-   public class TournDB
+   public class TournDB : MockDB<FIFATournament>
    {
-      public static List<FIFATournament> Tournaments { get; set; } = new List<FIFATournament>();
-
    }
 }

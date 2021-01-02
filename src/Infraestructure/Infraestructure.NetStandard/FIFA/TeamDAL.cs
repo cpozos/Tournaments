@@ -14,13 +14,13 @@ namespace Infraestructure.NetStandard.FIFA
       {
          var team = new FIFATeam
          {
-            Id = TeamDB.Teams.Count,
+            Id = TeamDB.Items.Count,
             Name = request.Name,
             OwnerId = request.PlayerId,
             TournamentId = request.TournamentId
          };
 
-         TeamDB.Teams.Add(team);
+         TeamDB.Items.Add(team);
 
          return new TeamDTO
          {
@@ -33,7 +33,7 @@ namespace Infraestructure.NetStandard.FIFA
 
       public TeamDTO Get(GetTeamQuery request)
       {
-         var team = TeamDB.Teams.FirstOrDefault(t =>
+         var team = TeamDB.Items.FirstOrDefault(t =>
             t.TournamentId == request.TournamentId &&
             t.OwnerId == request.OwnerId &&
             t.Id == request.Id);
@@ -48,11 +48,11 @@ namespace Infraestructure.NetStandard.FIFA
 
       public void Delete(DeleteTeamCommand request)
       {
-         for (int i = 0; i < TeamDB.Teams.Count; i++)
+         for (int i = 0; i < TeamDB.Items.Count; i++)
          {
-            if (TeamDB.Teams[i].Id == request.Id)
+            if (TeamDB.Items[i].Id == request.Id)
             {
-               TeamDB.Teams.RemoveAt(i);
+               TeamDB.Items.RemoveAt(i);
                break;
             }
          }
@@ -64,8 +64,7 @@ namespace Infraestructure.NetStandard.FIFA
       }
    }
 
-   public class TeamDB
+   public class TeamDB : MockDB<FIFATeam>
    {
-      public static List<FIFATeam> Teams { get; set; } = new List<FIFATeam>();
    }
 }

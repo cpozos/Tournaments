@@ -20,7 +20,7 @@ namespace Infraestructure.NetStandard
             FirstName = query.FirstName
          };
 
-         PeopleDB.Users.Add(person);
+         PeopleDB.Items.Add(person);
 
          return Task.FromResult(Response.Ok(new PersonDTO
          {
@@ -31,7 +31,7 @@ namespace Infraestructure.NetStandard
 
       public PersonDTO GetPerson(GetPersonQuery query)
       {
-         var person = PeopleDB.Users.FirstOrDefault(p => p.Id == query.Id);
+         var person = PeopleDB.Items.FirstOrDefault(p => p.Id == query.Id);
 
          return new PersonDTO
          {
@@ -41,15 +41,5 @@ namespace Infraestructure.NetStandard
    }
 
 
-   public static class PeopleDB
-   {
-      public static List<Person> Users = new List<Person>
-      {
-         new Person
-         {
-            Id = 1,
-            FirstName = "Alberto"
-         }
-      };
-   }
+   public class PeopleDB : MockDB<Person> { }
 }
