@@ -13,11 +13,11 @@ namespace WebApi.Controllers
 {
    [Route("api/[controller]")]
    [ApiController]
-   public class UserController : ControllerBase
+   public class UsersController : ControllerBase
    {
       private readonly IMediator _mediator;
 
-      public UserController(IMediator mediator)
+      public UsersController(IMediator mediator)
       {
          _mediator = mediator;
       }
@@ -32,7 +32,8 @@ namespace WebApi.Controllers
          });
       }
 
-      [HttpGet]
+      
+      [HttpGet("{id}")]
       public Task<Response<PersonDTO>> Get(int id)
       {
          return _mediator.Send(new GetPersonQuery
