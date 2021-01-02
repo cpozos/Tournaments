@@ -12,4 +12,8 @@
     <ProjectReference Include="..\..\Domain\Domain.NetStandard\Domain.NetStandard.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="FIFA\Match\Commands\" />
+  </ItemGroup>
+
 </Project>

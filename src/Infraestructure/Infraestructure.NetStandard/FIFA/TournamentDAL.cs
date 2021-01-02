@@ -1,24 +1,25 @@
-﻿using Application.NetStandard.Interfaces;
-
-using Domain.NetStandard.Entities.Organizers;
-using Domain.NetStandard.Entities.Games.FIFA;
-using Domain.NetStandard.Logic;
-
-using System;
+﻿using System;
 using System.IO;
 using System.Linq;
 using System.Collections.Generic;
-
 using System.Xml.Linq;
 using System.Xml.Serialization;
+
+using Application.NetStandard.Interfaces;
+using Application.NetStandard.FIFA.Match;
+using Application.NetStandard.FIFA.Tournament;
+
+using Domain.NetStandard.Logic;
+using Domain.NetStandard.Entities.Organizers;
+using Domain.NetStandard.Entities.Games.FIFA;
 using Domain.NetStandard.Entities.Players;
 
 namespace Infraestructure.NetStandard.FIFA
 {
-   public class TournamentManager : ITournamentRepository
+   public class TournamentDAL : ITournamentRepository
    {
       private static string FilePath;
-      public TournamentManager()
+      public TournamentDAL()
       {
          string path = @"PartidosGenerados.xml";
          if (!File.Exists(path))
@@ -26,12 +27,12 @@ namespace Infraestructure.NetStandard.FIFA
             path = @"..\PartidosGenerados.xml";
             if (!File.Exists(path))
             {
-               path = @"D:\Projects\NetCore\Tournaments\src\Infraestructure\PartidosGenerados.xml";
+               path = @"D:\Projects\NetCore\Tournaments\src\Infraestructure\Infraestructure.NetStandard\FIFA\PartidosGenerados.xml";
             }
          }
          FilePath = path;
       }
-      public FIFATournament GetTournament(uint id, IOrganizer organizer)
+      public FIFATournament GetTournament(int id, int organizerId)
       {
          var doc = XDocument.Load(FilePath);
 
@@ -44,12 +45,12 @@ namespace Infraestructure.NetStandard.FIFA
                 Local = node.Descendants("Local").Select(equipo => new FIFATeam
                 {
                    Name = equipo.Element("Name").Value,
-                   Owner = new PersonPlayer(equipo.Element("Owner").Value)
+                   Owner = new PersonPlayer(equipo.Element("Propietario").Value)
                 }).FirstOrDefault(),
                 Visitante = node.Descendants("Visitante").Select(equipo => new FIFATeam
                 {
                    Name = equipo.Element("Name").Value,
-                   Owner = new PersonPlayer(equipo.Element("Owner").Value)
+                   Owner = new PersonPlayer(equipo.Element("Propietario").Value)
                 }).FirstOrDefault(),
              }).ToList();
 
@@ -58,23 +59,31 @@ namespace Infraestructure.NetStandard.FIFA
             FirstName = "Beto"
          };
 
+         var teams = new List<FIFATeam>();
+         foreach (var partido in partidos)
+         {
+            if (!teams.Contains(partido.Local))
+               teams.Add(partido.Local);
+
+            if (!teams.Contains(partido.Visitante))
+               teams.Add(partido.Visitante);
+         }
+
          var tor = new FIFATournament
          {
-            GameId = 1
-            ,
-            Matches = partidos
-            ,
-            Orginizer = org
-            ,
-            TimeStarted = DateTime.Now
-            ,
-            TimeCreated = DateTime.Now
+            Title = "Torneo 1"
+            , GameId = 1
+            , Teams = teams
+            , Matches = partidos
+            , Orginizer = org
+            , TimeStarted = DateTime.Now
+            , TimeCreated = DateTime.Now
          };
 
          return tor;
       }
 
-      public AppResult Add(FIFATournament tournament)
+      public AppResult Add(TournamentDTO tournament)
       {
          var result = new AppResult
          {

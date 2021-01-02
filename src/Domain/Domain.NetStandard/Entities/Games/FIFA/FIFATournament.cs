@@ -15,5 +15,4 @@ namespace Domain.NetStandard.Entities.Games.FIFA
       public List<FIFATeam> Teams { get; set; }
       public List<FIFAMatch> Matches { get; set; }
    }
-
 }

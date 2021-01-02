@@ -1,6 +1,7 @@
 ﻿namespace Application.NetStandard.FIFA.Match
 {
-   public class UpdateMatchQuery
+   public class MatchDTO
    {
+
    }
 }
