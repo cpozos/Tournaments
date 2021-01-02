@@ -1,14 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Domain.NetStandard.Organizer
+namespace Domain.NetStandard.Entities.Organizers
 {
    public class PersonOrganizer : Person, IOrganizer
    {
-      public ulong Id { get; private set; }
       public string Name => this.FullName;
+      public List<OrganizerRol> Rols { get; set; }
+      public List<Tournament> OrginizedTournaments { get; set; }
 
-      public List<Tournament> OrginizedTournaments { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
-
+      public PersonOrganizer()
+      {
+         Rols = new List<OrganizerRol>();
+         OrginizedTournaments = new List<Tournament>();
+      }
    }
 }

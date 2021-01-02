@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace Domain.NetStandard.Organizer
+namespace Domain.NetStandard.Entities.Organizers
 {
    public interface IOrganizer
    {
-      ulong Id { get; }
       string Name { get; }
-      List<Tournament> OrginizedTournaments { get; set; }
+      List<Tournament> OrginizedTournaments { get; }
    }
 }

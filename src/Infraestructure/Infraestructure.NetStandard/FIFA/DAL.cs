@@ -1,6 +1,6 @@
-﻿using Application.NetStandard.FIFA;
+﻿using Application.NetStandard.Interfaces;
 
-using Domain.NetStandard.Organizer;
+using Domain.NetStandard.Entities.Organizers;
 using Domain.NetStandard.Entities.Games.FIFA;
 using Domain.NetStandard.Logic;
 
@@ -15,9 +15,8 @@ using Domain.NetStandard.Entities.Players;
 
 namespace Infraestructure.NetStandard.FIFA
 {
-   public class TournamentManager : ITournamentManager
+   public class TournamentManager : ITournamentRepository
    {
-
       private static string FilePath;
       public TournamentManager()
       {
@@ -151,6 +150,5 @@ namespace Infraestructure.NetStandard.FIFA
 
          return result;
       }
-
    }
 }

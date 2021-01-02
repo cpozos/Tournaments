@@ -1,5 +1,4 @@
-﻿using Domain.NetStandard.Entities.Games;
-using Domain.NetStandard.Organizer;
+﻿using Domain.NetStandard.Entities.Organizers;
 using System;
 
 namespace Domain.NetStandard
