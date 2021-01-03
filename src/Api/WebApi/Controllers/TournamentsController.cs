@@ -17,14 +17,9 @@ namespace WebApi.Controllers
 {
    [Route("api/[controller]")]
    [ApiController]
-   public class TournamentsController : ControllerBase
+   public class TournamentsController : CommonController
    {
-      private readonly IMediator _mediator;
-
-      public TournamentsController(IMediator mediator)
-      {
-         _mediator = mediator;
-      }
+      public TournamentsController(IMediator mediator) : base(mediator) { }
 
       [HttpPost]
       public Task<Response<TournamentDTO>> Create()

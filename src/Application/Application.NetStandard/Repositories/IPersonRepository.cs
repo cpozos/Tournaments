@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 
 using Application.NetStandard.Person;
 using Application.NetStandard.Person.Commands;
@@ -13,5 +14,7 @@ namespace Application.NetStandard.Repositories
       Task<Response<PersonDTO>> AddAsync(CreatePersonCommand query);
 
       PersonDTO GetPerson(GetPersonQuery query);
+
+      IEnumerable<PersonDTO> GetUsers(GetUsersQuery query);
    }
 }

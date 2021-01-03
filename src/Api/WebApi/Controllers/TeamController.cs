@@ -14,21 +14,15 @@ namespace WebApi.Controllers
 {
    [Route("api/[controller]")]
    [ApiController]
-   public class TeamController : ControllerBase
+   public class TeamController : CommonController
    {
-      private readonly IMediator _mediator;
-
-      public TeamController(IMediator mediator)
-      {
-         _mediator = mediator;
-      }
+      public TeamController(IMediator mediator) : base(mediator) { }
 
       [HttpPost]
       public Task<Response<TeamDTO>> Create([FromBody] CreateTeamCommand request)
       {
          return _mediator.Send(request);
       }
-
 
       [HttpGet("{id}&{tournamentId}&{playerId}")]
       public Task<Response<TeamDTO>> Get(int id, int tournamentId, int playerId)
