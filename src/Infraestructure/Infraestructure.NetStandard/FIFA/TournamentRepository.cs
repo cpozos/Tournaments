@@ -16,10 +16,10 @@ using Application.NetStandard.FIFA.Tournament.Commands;
 
 namespace Infraestructure.NetStandard.FIFA
 {
-   public class TournamentDAL : ITournamentRepository
+   public class TournamentRepository : ITournamentRepository
    {
       private static string FilePath;
-      public TournamentDAL()
+      public TournamentRepository()
       {
          string path = @"PartidosGenerados.xml";
          if (!File.Exists(path))

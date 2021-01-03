@@ -9,7 +9,7 @@ using Domain.NetStandard.Entities.Games.FIFA;
 
 namespace Infraestructure.NetStandard.FIFA
 {
-   public class TeamDAL : ITeamRepository
+   public class TeamRepository : ITeamRepository
    {
       public TeamDTO Add(CreateTeamCommand request)
       {

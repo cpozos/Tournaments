@@ -31,8 +31,8 @@ namespace WebApi
       // This method gets called by the runtime. Use this method to add services to the container.
       public void ConfigureServices(IServiceCollection services)
       {
-         services.AddScoped<AppLayer.Repositories.ITeamRepository, InfLayer.FIFA.TeamDAL>();
-         services.AddScoped<AppLayer.Repositories.ITournamentRepository, InfLayer.FIFA.TournamentDAL>();
+         services.AddScoped<AppLayer.Repositories.ITeamRepository, InfLayer.FIFA.TeamRepository>();
+         services.AddScoped<AppLayer.Repositories.ITournamentRepository, InfLayer.FIFA.TournamentRepository>();
          services.AddScoped<AppLayer.Repositories.IPersonRepository, InfLayer.PersonRepository>();
          services.AddMediatR(typeof(AppLayer.Person.Queries.GetPersonQueryHandler));
 
