@@ -1,11 +1,10 @@
-﻿using Application.NetStandard.Common;
-using Application.NetStandard.Interfaces;
+﻿using System.Threading;
+using System.Threading.Tasks;
+
+using Application.NetStandard.Common;
+using Application.NetStandard.Repositories;
 
 using Domain.NetStandard.Logic;
-
-using MediatR;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.NetStandard.Person.Queries
 {

@@ -1,10 +1,12 @@
-﻿using Application.NetStandard.Person;
+﻿using System.Threading.Tasks;
+
+using Application.NetStandard.Person;
 using Application.NetStandard.Person.Commands;
 using Application.NetStandard.Person.Queries;
-using Domain.NetStandard.Logic;
-using System.Threading.Tasks;
 
-namespace Application.NetStandard.Interfaces
+using Domain.NetStandard.Logic;
+
+namespace Application.NetStandard.Repositories
 {
    public interface IPersonRepository
    {

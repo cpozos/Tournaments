@@ -1,5 +1,5 @@
 ﻿using Application.NetStandard.Common;
-using Application.NetStandard.Interfaces;
+using Application.NetStandard.Repositories;
 
 using Domain.NetStandard.Logic;
 

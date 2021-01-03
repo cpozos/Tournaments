@@ -7,7 +7,6 @@ namespace Domain.NetStandard.Entities.Games
    {
       public uint Id { get; set; }
       public string Name { get; set; }
-      public List<Game> Games { get; }
       public List<Platform> AvailablePlatforms { get; set; }
       public Game()
       {

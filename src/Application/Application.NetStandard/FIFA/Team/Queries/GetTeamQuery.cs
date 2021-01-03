@@ -1,8 +1,10 @@
-﻿using Application.NetStandard.Common;
-using Application.NetStandard.Interfaces;
-using Domain.NetStandard.Logic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+
+using Application.NetStandard.Common;
+using Application.NetStandard.Repositories;
+
+using Domain.NetStandard.Logic;
 
 namespace Application.NetStandard.FIFA.Team.Queries
 {

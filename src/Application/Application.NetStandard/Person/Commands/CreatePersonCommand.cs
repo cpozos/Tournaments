@@ -1,8 +1,10 @@
-﻿using Application.NetStandard.Common;
-using Application.NetStandard.Interfaces;
-using Domain.NetStandard.Logic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+
+using Application.NetStandard.Common;
+using Application.NetStandard.Repositories;
+
+using Domain.NetStandard.Logic;
 
 namespace Application.NetStandard.Person.Commands
 {
@@ -11,6 +13,7 @@ namespace Application.NetStandard.Person.Commands
       public string FirstName { get; set; }
       public string MiddleName { get; set; }
       public string LastName { get; set; }
+      public string Email { get; set; }
    }
 
    public class CreatePersonCommandHandler : IHandlerWrapper<CreatePersonCommand, PersonDTO>

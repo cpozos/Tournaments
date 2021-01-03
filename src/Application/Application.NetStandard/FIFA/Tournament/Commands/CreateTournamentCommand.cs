@@ -1,11 +1,12 @@
-﻿using Application.NetStandard.Common;
-using Application.NetStandard.FIFA.Team;
-using Application.NetStandard.Interfaces;
-using Domain.NetStandard.Logic;
-using MediatR;
-using System.Collections.Generic;
-using System.Threading;
+﻿using System.Threading;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+
+using Application.NetStandard.Common;
+using Application.NetStandard.FIFA.Team;
+using Application.NetStandard.Repositories;
+
+using Domain.NetStandard.Logic;
 
 namespace Application.NetStandard.FIFA.Tournament.Commands
 {

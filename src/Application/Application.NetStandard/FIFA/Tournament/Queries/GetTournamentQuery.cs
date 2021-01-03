@@ -1,10 +1,9 @@
-﻿
+﻿using System.Threading;
+using System.Threading.Tasks;
 
 using Application.NetStandard.Common;
-using Application.NetStandard.Interfaces;
+using Application.NetStandard.Repositories;
 using Domain.NetStandard.Logic;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Application.NetStandard.FIFA.Tournament.Queries
 {

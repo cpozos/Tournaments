@@ -1,10 +1,11 @@
-﻿using Application.NetStandard.FIFA.Team;
+﻿using System.Linq;
+
+using Application.NetStandard.FIFA.Team;
 using Application.NetStandard.FIFA.Team.Commands;
 using Application.NetStandard.FIFA.Team.Queries;
-using Application.NetStandard.Interfaces;
+using Application.NetStandard.Repositories;
+
 using Domain.NetStandard.Entities.Games.FIFA;
-using System.Collections.Generic;
-using System.Linq;
 
 namespace Infraestructure.NetStandard.FIFA
 {

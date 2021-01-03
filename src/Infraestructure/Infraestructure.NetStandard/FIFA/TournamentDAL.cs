@@ -5,8 +5,7 @@ using System.Collections.Generic;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-using Application.NetStandard.Interfaces;
-using Application.NetStandard.FIFA.Match;
+using Application.NetStandard.Repositories;
 using Application.NetStandard.FIFA.Tournament;
 
 using Domain.NetStandard.Logic;

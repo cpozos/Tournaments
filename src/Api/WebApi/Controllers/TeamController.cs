@@ -23,15 +23,10 @@ namespace WebApi.Controllers
          _mediator = mediator;
       }
 
-      [HttpPost("{name}")]
-      public Task<Response<TeamDTO>> Create(string name)
+      [HttpPost]
+      public Task<Response<TeamDTO>> Create([FromBody] CreateTeamCommand request)
       {
-         return _mediator.Send(new CreateTeamCommand
-         {
-            Name = name
-            , PlayerId = 0
-            , TournamentId = 0
-         });
+         return _mediator.Send(request);
       }
 
 

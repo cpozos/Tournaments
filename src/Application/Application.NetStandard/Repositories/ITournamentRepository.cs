@@ -1,11 +1,12 @@
-﻿using Domain.NetStandard.Logic;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 using Application.NetStandard.FIFA.Tournament;
-using Application.NetStandard.FIFA.Match;
-using Domain.NetStandard.Entities.Games.FIFA;
 using Application.NetStandard.FIFA.Tournament.Commands;
 
-namespace Application.NetStandard.Interfaces
+using Domain.NetStandard.Logic;
+using Domain.NetStandard.Entities.Games.FIFA;
+
+namespace Application.NetStandard.Repositories
 {
    public interface ITournamentRepository
    {

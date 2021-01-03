@@ -1,13 +1,13 @@
-﻿using Application.NetStandard.Interfaces;
+﻿using System.Linq;
+using System.Threading.Tasks;
+
+using Application.NetStandard.Repositories;
 using Application.NetStandard.Person;
 using Application.NetStandard.Person.Commands;
 using Application.NetStandard.Person.Queries;
+
 using Domain.NetStandard;
 using Domain.NetStandard.Logic;
-
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Infraestructure.NetStandard
 {
@@ -40,6 +40,4 @@ namespace Infraestructure.NetStandard
       }
    }
 
-
-   public class PeopleDB : MockDB<Person> { }
 }

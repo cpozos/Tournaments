@@ -2,7 +2,7 @@
 using Application.NetStandard.FIFA.Team.Commands;
 using Application.NetStandard.FIFA.Team.Queries;
 
-namespace Application.NetStandard.Interfaces
+namespace Application.NetStandard.Repositories
 {
    public interface ITeamRepository
    {
