@@ -7,6 +7,7 @@ using MediatR;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Net;
 using System.Threading.Tasks;
 
 namespace WebApi.Controllers
@@ -17,12 +18,23 @@ namespace WebApi.Controllers
    {
       public UsersController(IMediator mediator) : base(mediator) { }
 
+      /// <summary>
+      /// It is used to add a new User
+      /// </summary>
+      /// <param name="request"></param>
+      /// <returns></returns>
       [HttpPost]
+      [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(Response<PersonDTO>))]
       public Task<Response<PersonDTO>> Add([FromBody] CreatePersonCommand request)
       {
          return _mediator.Send(request);
       }
       
+      /// <summary>
+      /// 
+      /// </summary>
+      /// <param name="id"></param>
+      /// <returns></returns>
       [HttpGet("{id}")]
       public Task<Response<PersonDTO>> Get(int id)
       {
