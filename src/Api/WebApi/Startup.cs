@@ -33,6 +33,16 @@ namespace WebApi
          services.AddScoped<AppLayer.Repositories.ITournamentRepository, InfLayer.FIFA.TournamentDAL>();
          services.AddScoped<AppLayer.Repositories.IPersonRepository, InfLayer.PersonRepository>();
          services.AddMediatR(typeof(AppLayer.Person.Queries.GetPersonQueryHandler));
+
+         services.AddSwaggerGen(doc =>
+         {
+            doc.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+            {
+               Title = "Tournaments API",
+               Version = "v1.0.0"
+            });
+         });
+
          services.AddControllers();
       }
 
@@ -45,6 +55,13 @@ namespace WebApi
          }
 
          app.UseHttpsRedirection();
+
+         app.UseSwagger();
+         app.UseSwaggerUI(opt =>
+         {
+            opt.SwaggerEndpoint("/swagger/v1/swagger.json","Tournaments API");
+            opt.RoutePrefix = string.Empty; // Root of the API
+         });
 
          app.UseRouting();
 
