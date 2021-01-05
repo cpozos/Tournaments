@@ -4,7 +4,7 @@ namespace Domain.NetStandard.Entities.Organizers
 {
    public interface IOrganizer
    {
-      string Name { get; }
+      int Id { get; }
       List<Tournament> OrginizedTournaments { get; }
    }
 }

@@ -8,7 +8,7 @@ using Domain.NetStandard.Logic;
 
 namespace Application.NetStandard.Person.Commands
 {
-   public class CreatePersonCommand : IRequestWrapper<PersonDTO> 
+   public class CreatePersonCommand : IRequestWrapper<PersonDto> 
    {
       public string FirstName { get; set; }
       public string MiddleName { get; set; }
@@ -16,7 +16,7 @@ namespace Application.NetStandard.Person.Commands
       public string Email { get; set; }
    }
 
-   public class CreatePersonCommandHandler : IHandlerWrapper<CreatePersonCommand, PersonDTO>
+   public class CreatePersonCommandHandler : IHandlerWrapper<CreatePersonCommand, PersonDto>
    {
       private readonly IPersonRepository _repository;
 
@@ -24,7 +24,7 @@ namespace Application.NetStandard.Person.Commands
       {
          _repository = repository;
       }
-      public Task<Response<PersonDTO>> Handle(CreatePersonCommand request, CancellationToken cancellationToken)
+      public Task<Response<PersonDto>> Handle(CreatePersonCommand request, CancellationToken cancellationToken)
       {
          return _repository.AddAsync(request);
       }

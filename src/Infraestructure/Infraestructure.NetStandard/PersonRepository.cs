@@ -14,7 +14,7 @@ namespace Infraestructure.NetStandard
 {
    public class PersonRepository : IPersonRepository
    {
-      public Task<Response<PersonDTO>> AddAsync(CreatePersonCommand query)
+      public Task<Response<PersonDto>> AddAsync(CreatePersonCommand query)
       {
          // Creates entity
          var person = new Person
@@ -29,7 +29,7 @@ namespace Infraestructure.NetStandard
          PeopleDB.Items.Add(person);
 
          // Returns DTO
-         return Task.FromResult(Response.Ok(new PersonDTO
+         return Task.FromResult(Response.Ok(new PersonDto
          {
             Id = person.Id,
             FirstName = query.FirstName,
@@ -38,11 +38,11 @@ namespace Infraestructure.NetStandard
          })); 
       }
 
-      public PersonDTO GetPerson(GetPersonQuery query)
+      public PersonDto GetPerson(GetPersonQuery query)
       {
          var person = PeopleDB.Items.Find(p => p.Id == query.Id);
          
-         return new PersonDTO
+         return new PersonDto
          {
             Id = person.Id,
             FirstName = person.FirstName,
@@ -52,9 +52,9 @@ namespace Infraestructure.NetStandard
       }
 
 
-      public IEnumerable<PersonDTO> GetUsers(GetUsersQuery query)
+      public IEnumerable<PersonDto> GetUsers(GetUsersQuery query)
       {
-         return PeopleDB.Items.Select(p => new PersonDTO
+         return PeopleDB.Items.Select(p => new PersonDto
          {
             Id = p.Id,
             FirstName = p.FirstName,

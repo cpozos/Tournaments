@@ -1,4 +1,4 @@
-﻿using Domain.NetStandard.ValueObjects;
+﻿using Domain.NetStandard.Enums;
 using System.Collections.Generic;
 
 namespace Domain.NetStandard.Entities.Games
@@ -7,7 +7,7 @@ namespace Domain.NetStandard.Entities.Games
    {
       public uint Id { get; set; }
       public string Name { get; set; }
-      public List<Platform> AvailablePlatforms { get; set; }
+      public IEnumerable<Platform> AvailablePlatforms { get; set; }
       public Game()
       {
          AvailablePlatforms = new List<Platform>();

@@ -24,8 +24,8 @@ namespace WebApi.Controllers
       /// <param name="request"></param>
       /// <returns></returns>
       [HttpPost]
-      [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(Response<PersonDTO>))]
-      public Task<Response<PersonDTO>> Add([FromBody] CreatePersonCommand request)
+      [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(Response<PersonDto>))]
+      public Task<Response<PersonDto>> Add([FromBody] CreatePersonCommand request)
       {
          return _mediator.Send(request);
       }
@@ -36,7 +36,7 @@ namespace WebApi.Controllers
       /// <param name="id"></param>
       /// <returns></returns>
       [HttpGet("{id}")]
-      public Task<Response<PersonDTO>> Get(int id)
+      public Task<Response<PersonDto>> Get(int id)
       {
          return _mediator.Send(new GetPersonQuery
          {
@@ -45,7 +45,7 @@ namespace WebApi.Controllers
       }
 
       [HttpGet]
-      public Task<Response<IEnumerable<PersonDTO>>> Get()
+      public Task<Response<IEnumerable<PersonDto>>> Get()
       {
          return _mediator.Send(new GetUsersQuery());
       }

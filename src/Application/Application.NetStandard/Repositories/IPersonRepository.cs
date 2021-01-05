@@ -11,10 +11,10 @@ namespace Application.NetStandard.Repositories
 {
    public interface IPersonRepository
    {
-      Task<Response<PersonDTO>> AddAsync(CreatePersonCommand query);
+      Task<Response<PersonDto>> AddAsync(CreatePersonCommand query);
 
-      PersonDTO GetPerson(GetPersonQuery query);
+      PersonDto GetPerson(GetPersonQuery query);
 
-      IEnumerable<PersonDTO> GetUsers(GetUsersQuery query);
+      IEnumerable<PersonDto> GetUsers(GetUsersQuery query);
    }
 }
