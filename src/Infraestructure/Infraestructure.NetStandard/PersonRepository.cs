@@ -51,7 +51,6 @@ namespace Infraestructure.NetStandard
          };
       }
 
-
       public IEnumerable<PersonDto> GetUsers(GetUsersQuery query)
       {
          return PeopleDB.Items.Select(p => new PersonDto
@@ -63,5 +62,4 @@ namespace Infraestructure.NetStandard
          });
       }
    }
-
 }

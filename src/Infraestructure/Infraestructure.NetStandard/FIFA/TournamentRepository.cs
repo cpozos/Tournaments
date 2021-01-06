@@ -37,27 +37,32 @@ namespace Infraestructure.NetStandard.FIFA
          var doc = XDocument.Load(FilePath);
 
          var partidos = doc.Root
-             .Descendants("Partido")
-             .Select(node => new FIFAMatch
-             {
-                GolesLocal = int.Parse(node.Element("GolesLocal").Value),
-                GolesVisitante = int.Parse(node.Element("GolesVisitante").Value),
-                Local = node.Descendants("Local").Select(equipo => new FIFATeam
-                {
-                   Name = equipo.Element("Name").Value,
-                   Owner = new PersonPlayer(equipo.Element("Propietario").Value)
-                }).FirstOrDefault(),
-                Visitante = node.Descendants("Visitante").Select(equipo => new FIFATeam
-                {
-                   Name = equipo.Element("Name").Value,
-                   Owner = new PersonPlayer(equipo.Element("Propietario").Value)
-                }).FirstOrDefault(),
-             }).ToList();
+            .Descendants("Partido")
+            .Select(node => new FIFAMatch
+            {
+               GolesLocal = int.Parse(node.Element("GolesLocal").Value),
+               GolesVisitante = int.Parse(node.Element("GolesVisitante").Value),
+               Local = node.Descendants("Local").Select(equipo => new FIFATeam
+               {
+                  Name = equipo.Element("Name").Value,
+                  Owner = new PersonPlayer{
+                     FirstName = equipo.Element("Propietario").Value
+                  }
+               }).FirstOrDefault(),
+               Visitante = node.Descendants("Visitante").Select(equipo => new FIFATeam
+               {
+                  Name = equipo.Element("Name").Value,
+                  Owner = new PersonPlayer { 
+                     FirstName = equipo.Element("Propietario").Value
+                  }
+               }).FirstOrDefault(),
+            }).ToList();
 
          var org = new PersonOrganizer
          {
             FirstName = "Beto"
          };
+         org.Id = org.FirstName.GetHashCode();
 
          var teams = new List<FIFATeam>();
          foreach (var partido in partidos)
@@ -75,7 +80,7 @@ namespace Infraestructure.NetStandard.FIFA
             , GameId = 1
             , Teams = teams
             , Matches = partidos
-            , Orginizer = org
+            , OrginizerId = org.Id
             , TimeStarted = DateTime.Now
             , TimeCreated = DateTime.Now
          };
@@ -180,7 +185,4 @@ namespace Infraestructure.NetStandard.FIFA
       }
    }
 
-   public class TournDB : MockDB<FIFATournament>
-   {
-   }
 }
