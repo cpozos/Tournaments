@@ -9,19 +9,18 @@ using Domain.NetStandard.Entities.Games.FIFA;
 
 namespace Infraestructure.NetStandard.FIFA
 {
-   public class TeamRepository : ITeamRepository
+   public class FIFATeamRepository : ITeamRepository
    {
       public TeamDTO Add(CreateTeamCommand request)
       {
          var team = new FIFATeam
          {
-            Id = TeamDB.Items.Count,
             Name = request.Name,
             OwnerId = request.PlayerId,
             TournamentId = request.TournamentId
          };
 
-         TeamDB.Items.Add(team);
+         FIFATeamDB.Add(team);
 
          return new TeamDTO
          {
@@ -34,7 +33,7 @@ namespace Infraestructure.NetStandard.FIFA
 
       public TeamDTO Get(GetTeamQuery request)
       {
-         var team = TeamDB.Items.FirstOrDefault(t =>
+         var team = FIFATeamDB.Items.FirstOrDefault(t =>
             t.TournamentId == request.TournamentId &&
             t.OwnerId == request.OwnerId &&
             t.Id == request.Id);
@@ -49,11 +48,11 @@ namespace Infraestructure.NetStandard.FIFA
 
       public void Delete(DeleteTeamCommand request)
       {
-         for (int i = 0; i < TeamDB.Items.Count; i++)
+         for (int i = 0; i < FIFATeamDB.Items.Count; i++)
          {
-            if (TeamDB.Items[i].Id == request.Id)
+            if (FIFATeamDB.Items[i].Id == request.Id)
             {
-               TeamDB.Items.RemoveAt(i);
+               FIFATeamDB.Items.RemoveAt(i);
                break;
             }
          }
@@ -65,7 +64,5 @@ namespace Infraestructure.NetStandard.FIFA
       }
    }
 
-   public class TeamDB : MockDB<FIFATeam>
-   {
-   }
+  
 }

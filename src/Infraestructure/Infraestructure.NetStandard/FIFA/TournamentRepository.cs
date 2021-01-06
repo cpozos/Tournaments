@@ -139,7 +139,7 @@ namespace Infraestructure.NetStandard.FIFA
          }
 
 
-         TournDB.Items.Add(instance);
+         FIFATournDB.Add(instance);
 
          return new TournamentDTO
          {

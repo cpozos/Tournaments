@@ -1,4 +1,5 @@
 ﻿using Application.NetStandard.Organizer;
+using Application.NetStandard.Organizer.Commands;
 using Domain.NetStandard.Logic;
 
 using System.Threading.Tasks;
