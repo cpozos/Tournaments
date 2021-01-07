@@ -1,5 +1,6 @@
-﻿using System.Linq;
-
+﻿using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Application.NetStandard.FIFA.Team;
 using Application.NetStandard.FIFA.Team.Commands;
 using Application.NetStandard.FIFA.Team.Queries;
@@ -11,7 +12,56 @@ namespace Infraestructure.NetStandard.FIFA
 {
    public class FIFATeamRepository : ITeamRepository
    {
-      public TeamDTO Add(CreateTeamCommand request)
+      public FIFATeamDTO Get(GetTeamQuery request)
+      {
+         var team = FIFATeamDB.Items.FirstOrDefault(t =>
+            t.TournamentId == request.TournamentId &&
+            t.OwnerId == request.OwnerId &&
+            t.Id == request.Id);
+
+         return new FIFATeamDTO
+         {
+            Name = team.Name,
+            OwnerId = team.OwnerId,
+            TournamentId = team.TournamentId
+         };
+      }
+
+      private void AutoCreateMatches()
+      {
+         foreach (var equipo in request.Teams)
+         {
+            var team = new FIFATeam
+            {
+               Name = equipo.Name
+            };
+
+            foreach (var equipo2 in request.Teams)
+            {
+               var team2 = new FIFATeam
+               {
+                  Name = equipo2.Name
+               };
+
+               if (!team.Equals(team2))
+               {
+                  var partido = new FIFAMatch
+                  {
+                     Local = team,
+                     Visitante = team2
+                  };
+
+                  if (!instance.Matches.Any(par => par.Equals(partido)))
+                  {
+                     instance.Matches.Add(partido);
+                  }
+               }
+            }
+         }
+
+      }
+
+      public FIFATeamDTO Add(CreateTeamCommand request)
       {
          var team = new FIFATeam
          {
@@ -22,7 +72,7 @@ namespace Infraestructure.NetStandard.FIFA
 
          FIFATeamDB.Add(team);
 
-         return new TeamDTO
+         return new FIFATeamDTO
          {
             Id = team.Id
             , Name = team.Name
@@ -31,19 +81,59 @@ namespace Infraestructure.NetStandard.FIFA
          };
       }
 
-      public TeamDTO Get(GetTeamQuery request)
+      public IEnumerable<FIFATeamDTO> Add(CreateTeamsCommand request)
       {
-         var team = FIFATeamDB.Items.FirstOrDefault(t =>
-            t.TournamentId == request.TournamentId &&
-            t.OwnerId == request.OwnerId &&
-            t.Id == request.Id);
-
-         return new TeamDTO
+         if(request?.Commands == null)
          {
-            Name = team.Name,
-            OwnerId = team.OwnerId,
-            TournamentId = team.TournamentId
-         };
+            return null;
+         }
+
+         var added = new List<FIFATeam>();
+         bool interrupted = true;
+
+         foreach (var item in request.Commands)
+         {
+            var res = Add(item);
+            if(res == null)
+            {
+               interrupted = true;
+               break;
+            }
+            else
+            {
+               var team = new FIFATeam
+               {
+                  Name = item.Name,
+                  OwnerId = item.PlayerId,
+                  TournamentId = item.TournamentId
+               };
+
+               added.Add(team);
+            }
+         }
+
+         if (interrupted)
+         {
+            foreach (var item in added)
+            {
+               this.Delete(new DeleteTeamCommand
+               {
+                  Id = item.Id
+               });
+            }
+
+            return null;
+         }
+         else
+         {
+            return added.Select(t => new FIFATeamDTO
+            {
+               Id = t.Id,
+               Name = t.Name,
+               OwnerId = t.OwnerId,
+               TournamentId = t.TournamentId
+            }).ToList();
+         }
       }
 
       public void Delete(DeleteTeamCommand request)
@@ -58,10 +148,12 @@ namespace Infraestructure.NetStandard.FIFA
          }
       }
 
-      public TeamDTO Update(UpdateTeamCommand request)
+      public FIFATeamDTO Update(UpdateTeamCommand request)
       {
          throw new System.NotImplementedException();
       }
+
+      
    }
 
   

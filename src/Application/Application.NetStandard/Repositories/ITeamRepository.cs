@@ -1,15 +1,16 @@
 ﻿using Application.NetStandard.FIFA.Team;
 using Application.NetStandard.FIFA.Team.Commands;
 using Application.NetStandard.FIFA.Team.Queries;
+using System.Collections.Generic;
 
 namespace Application.NetStandard.Repositories
 {
    public interface ITeamRepository
    {
-      TeamDTO Add(CreateTeamCommand request);
+      FIFATeamDTO Add(CreateTeamCommand request);
+      IEnumerable<FIFATeamDTO> Add(CreateTeamsCommand request);
+      FIFATeamDTO Get(GetTeamQuery request);
       void Delete(DeleteTeamCommand request);
-      TeamDTO Update(UpdateTeamCommand request);
-
-      TeamDTO Get(GetTeamQuery request);
+      FIFATeamDTO Update(UpdateTeamCommand request);
    }
 }

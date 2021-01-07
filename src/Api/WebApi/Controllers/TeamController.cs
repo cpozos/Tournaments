@@ -4,6 +4,7 @@ using Application.NetStandard.FIFA.Team.Queries;
 using Domain.NetStandard.Logic;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace WebApi.Controllers
@@ -15,13 +16,19 @@ namespace WebApi.Controllers
       public TeamController(IMediator mediator) : base(mediator) { }
 
       [HttpPost]
-      public Task<Response<TeamDTO>> Create([FromBody] CreateTeamCommand request)
+      public Task<Response<FIFATeamDTO>> Create([FromBody] CreateTeamCommand request)
+      {
+         return _mediator.Send(request);
+      }
+
+      [HttpPost]
+      public Task<Response<IEnumerable<FIFATeamDTO>>> CreateTeams([FromBody] CreateTeamsCommand request)
       {
          return _mediator.Send(request);
       }
 
       [HttpGet("{id}&{tournamentId}&{playerId}")]
-      public Task<Response<TeamDTO>> Get(int id, int tournamentId, int playerId)
+      public Task<Response<FIFATeamDTO>> Get(int id, int tournamentId, int playerId)
       {
          return _mediator.Send(new GetTeamQuery
          {

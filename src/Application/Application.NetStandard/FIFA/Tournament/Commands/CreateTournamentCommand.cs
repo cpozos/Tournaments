@@ -13,8 +13,8 @@ namespace Application.NetStandard.FIFA.Tournament.Commands
    public class CreateTournamentCommand : IRequestWrapper<TournamentDTO>
    {
       public int OrganizerId { get; set; }
+      public int GameId { get; set; }
       public string Title { get; set; }
-      public List<TeamDTO> Teams { get; set; }
    }
 
    public class CreateTournamentCommandHandler : IHandlerWrapper<CreateTournamentCommand, TournamentDTO>

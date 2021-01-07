@@ -8,9 +8,9 @@ namespace Domain.NetStandard.Entities.Games.FIFA
       public int TournamentId { get; set; }
       public FIFATeam Local { get; set; }
       public FIFATeam Visitante { get; set; }
+      public DateTime DateTimePlayed { get; set; }
       public int? GolesLocal { get; set; }
       public int? GolesVisitante { get; set; }
-      public DateTime DateTimePlayed { get; set; }
       public bool WasPlayed => GolesLocal != null && GolesVisitante != null && DateTimePlayed != null;
       public bool Equals(FIFAMatch other) =>
          other != null 

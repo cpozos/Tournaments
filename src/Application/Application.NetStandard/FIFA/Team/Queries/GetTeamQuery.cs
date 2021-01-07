@@ -8,14 +8,14 @@ using Domain.NetStandard.Logic;
 
 namespace Application.NetStandard.FIFA.Team.Queries
 {
-   public class GetTeamQuery : IRequestWrapper<TeamDTO>
+   public class GetTeamQuery : IRequestWrapper<FIFATeamDTO>
    {
       public int OwnerId { get; set; }
       public int TournamentId { get; set; }
       public int Id { get; set; }
    }
 
-   public class GetTeamQueryHandler : IHandlerWrapper<GetTeamQuery, TeamDTO>
+   public class GetTeamQueryHandler : IHandlerWrapper<GetTeamQuery, FIFATeamDTO>
    {
       private readonly ITeamRepository repository;
 
@@ -23,7 +23,7 @@ namespace Application.NetStandard.FIFA.Team.Queries
       {
          this.repository = repository;
       }
-      public Task<Response<TeamDTO>> Handle(GetTeamQuery request, CancellationToken cancellationToken)
+      public Task<Response<FIFATeamDTO>> Handle(GetTeamQuery request, CancellationToken cancellationToken)
       {
          return Task.FromResult(Response.Ok(repository.Get(request)));
       }

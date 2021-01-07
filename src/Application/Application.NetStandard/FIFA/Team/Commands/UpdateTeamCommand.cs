@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Application.NetStandard.FIFA.Team.Commands
 {
-   public class UpdateTeamCommand : IRequestWrapper<TeamDTO>
+   public class UpdateTeamCommand : IRequestWrapper<FIFATeamDTO>
    {
       public int Id { get; set; }
       public int TournamentId { get; set; }
@@ -17,7 +17,7 @@ namespace Application.NetStandard.FIFA.Team.Commands
       public int OwnerId { get; set; }
    }
 
-   public class UpdateTeamCommandHandler : IHandlerWrapper<UpdateTeamCommand, TeamDTO>
+   public class UpdateTeamCommandHandler : IHandlerWrapper<UpdateTeamCommand, FIFATeamDTO>
    {
       private readonly ITeamRepository repository;
 
@@ -26,7 +26,7 @@ namespace Application.NetStandard.FIFA.Team.Commands
          this.repository = repository;
       }
 
-      public Task<Response<TeamDTO>> Handle(UpdateTeamCommand request, CancellationToken cancellationToken)
+      public Task<Response<FIFATeamDTO>> Handle(UpdateTeamCommand request, CancellationToken cancellationToken)
       {
          return Task.FromResult(Response.Ok(repository.Update(request)));
       }

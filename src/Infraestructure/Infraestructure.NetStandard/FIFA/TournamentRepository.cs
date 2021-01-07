@@ -32,6 +32,7 @@ namespace Infraestructure.NetStandard.FIFA
          }
          FilePath = path;
       }
+      
       public FIFATournament GetTournament(int id, int organizerId)
       {
          var doc = XDocument.Load(FilePath);
@@ -91,7 +92,7 @@ namespace Infraestructure.NetStandard.FIFA
       public TournamentDTO Add(CreateTournamentCommand request)
       {
          // Validates entity
-         if (request == null || request.Teams.Count == 0)
+         if (request == null || request.te.Count == 0)
          {
             return null;
          }
@@ -103,42 +104,6 @@ namespace Infraestructure.NetStandard.FIFA
             TimeCreated = DateTime.Now
          };
 
-         foreach (var equipo in request.Teams)
-         {
-            var team = new FIFATeam
-            {
-               Name = equipo.Name
-            };
-
-            foreach (var equipo2 in request.Teams)
-            {
-               var team2 = new FIFATeam
-               {
-                  Name = equipo2.Name
-               };
-
-               if (!team.Equals(team2))
-               {
-                  var partido = new FIFAMatch
-                  {
-                     Local = team,
-                     Visitante = team2
-                  };
-
-                  if (!instance.Matches.Any(par => par.Equals(partido)))
-                  {
-                     instance.Matches.Add(partido);
-                  }
-               }
-            }
-         }
-
-         if (instance.Matches.Count < 1)
-         {
-            return null;
-         }
-
-
          FIFATournDB.Add(instance);
 
          return new TournamentDTO
@@ -146,9 +111,6 @@ namespace Infraestructure.NetStandard.FIFA
             Title = instance.Title,
             Matches = instance.Matches,
          };
-
-         //result = Save(tournament.Matches);
-         //return result;
       }
 
       public AppResult Save(FIFAMatch match) => Save(new List<FIFAMatch> { match });
