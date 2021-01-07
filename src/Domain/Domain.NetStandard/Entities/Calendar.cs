@@ -1,5 +1,4 @@
-﻿using Domain.NetStandard.Entities.Games.FIFA;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Domain.NetStandard.Entities
 {

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.NetStandard.Entities;
+using System;
 
 namespace Domain.NetStandard
 {
@@ -13,6 +14,7 @@ namespace Domain.NetStandard
       public DateTime TimeStarted { get; set; }
       public DateTime TimeFinished { get; set; }
 
+      public Calendar Calendar { get; set; }
       public bool IsFinished => DateTime.Compare(DateTime.Now, TimeFinished) > 0;
    }
 }
