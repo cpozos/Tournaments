@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Domain.NetStandard.Entities
 {
@@ -10,6 +9,5 @@ namespace Domain.NetStandard.Entities
       public int TournamentId { get; set; }
       public IEnumerable<ITeam> Teams { get; set; }
       public DateTime DateToBePlayed { get; set; }
-      public IMatchResult Result { get; set; }
    }
 }
