@@ -1,20 +1,11 @@
-﻿using Domain.NetStandard.Entities.Players;
-using Domain.NetStandard.Exceptions;
-
-namespace Domain.NetStandard.Entities.Games.FIFA
+﻿namespace Domain.NetStandard.Entities.Games.FIFA
 {
-   public class FIFATeam
+   public class FIFATeam : IGameTeam
    {
-      public int Id { get; set; }
       public int TournamentId { get; set; }
-      public int OwnerId { get; set; }
-      public PersonPlayer Owner { get; set; }
+      public int PlayerId { get; set; }
       public string Name { get; set; }
       public FIFATeamStatistics Statistics { get; set; }
-      public FIFATeam()
-      {
-         Statistics = new FIFATeamStatistics();
-      }      
 
       //public int CompareTo(FIFATeam other)
       //{

@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Application.NetStandard.FIFA.Team;
 using Application.NetStandard.FIFA.Team.Commands;
 using Application.NetStandard.FIFA.Team.Queries;
-using Application.NetStandard.Repositories;
+using Application.NetStandard.Repositories.FIFA;
 
 using Domain.NetStandard.Entities.Games.FIFA;
 
@@ -16,14 +16,12 @@ namespace Infraestructure.NetStandard.FIFA
       {
          var team = FIFATeamDB.Items.FirstOrDefault(t =>
             t.TournamentId == request.TournamentId &&
-            t.OwnerId == request.OwnerId &&
-            t.Id == request.Id);
+            t.PlayerId == request.OwnerId);
 
          return new FIFATeamDTO
          {
             Name = team.Name,
-            OwnerId = team.OwnerId,
-            TournamentId = team.TournamentId
+            OwnerId = team.PlayerId
          };
       }
 
@@ -47,8 +45,11 @@ namespace Infraestructure.NetStandard.FIFA
                {
                   var partido = new FIFAMatch
                   {
-                     Local = team,
-                     Visitante = team2
+                     Teams = new List<FIFATeam>
+                     {
+                        team, 
+                        team2
+                     }
                   };
 
                   if (!instance.Matches.Any(par => par.Equals(partido)))

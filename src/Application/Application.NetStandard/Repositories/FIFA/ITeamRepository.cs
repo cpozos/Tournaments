@@ -3,7 +3,7 @@ using Application.NetStandard.FIFA.Team.Commands;
 using Application.NetStandard.FIFA.Team.Queries;
 using System.Collections.Generic;
 
-namespace Application.NetStandard.Repositories
+namespace Application.NetStandard.Repositories.FIFA
 {
    public interface ITeamRepository
    {

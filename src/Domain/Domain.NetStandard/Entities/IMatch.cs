@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Domain.NetStandard.Entities.Games;
+using System;
 using System.Collections.Generic;
 
 namespace Domain.NetStandard.Entities
@@ -7,7 +8,7 @@ namespace Domain.NetStandard.Entities
    {
       public int Id { get; set; }
       public int TournamentId { get; set; }
-      public IEnumerable<ITeam> Teams { get; set; }
+      public IEnumerable<IGameTeam> Teams { get; set; }
       public DateTime DateToBePlayed { get; set; }
    }
 }

@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 
 using Application.NetStandard.Common;
-using Application.NetStandard.Repositories;
+using Application.NetStandard.Repositories.FIFA;
 
 using Domain.NetStandard.Logic;
 

@@ -13,8 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="FIFA\Match\Commands\" />
-    <Folder Include="FIFA\Calendar\" />
     <Folder Include="Game\" />
   </ItemGroup>
 

@@ -1,6 +1,8 @@
 ﻿namespace Application.NetStandard.FIFA.Match
 {
-   public class MatchDTO
+   public class MatchDto
    {
+      public int Id { get; set; }
+      public int MyProperty { get; set; }
    }
 }

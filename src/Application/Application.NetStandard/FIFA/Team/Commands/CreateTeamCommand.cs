@@ -3,8 +3,7 @@ using System.Threading;
 using System.Threading.Tasks;
 
 using Application.NetStandard.Common;
-using Application.NetStandard.Repositories;
-
+using Application.NetStandard.Repositories.FIFA;
 using Domain.NetStandard.Logic;
 
 namespace Application.NetStandard.FIFA.Team.Commands
