@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Application.NetStandard.Player.Queries
 {
-   public class GetPersonPlayerQuery : IRequestWrapper<PersonPlayerDto>
+   public class GetPersonPlayerQuery : IRequestWrapper<SinglePlayerDto>
    {
       public int Id { get; set; }
    }
 
-   public class GetPersonPlayerQueryHandler : IHandlerWrapper<GetPersonPlayerQuery, PersonPlayerDto>
+   public class GetPersonPlayerQueryHandler : IHandlerWrapper<GetPersonPlayerQuery, SinglePlayerDto>
    {
       private readonly IPlayerRepository _repository;
 
@@ -19,10 +19,10 @@ namespace Application.NetStandard.Player.Queries
       {
          _repository = repository;
       }
-      public Task<Response<PersonPlayerDto>> Handle(GetPersonPlayerQuery request, CancellationToken cancellationToken)
+      public Task<Response<SinglePlayerDto>> Handle(GetPersonPlayerQuery request, CancellationToken cancellationToken)
       {
          var person = _repository.GetPlayer(request);
-         var player = new PersonPlayerDto
+         var player = new SinglePlayerDto
          {
             Id = person.Id,
             Name = $"{person.FirstName}{person.MiddleName}"

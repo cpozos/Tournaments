@@ -14,7 +14,7 @@ namespace Infraestructure.NetStandard
       public Task<Response<TeamPlayerDto>> CreateTeamPlayer(CreateTeamPlayerCommand query)
       {
 
-         PlayerDB.Add(new PersonPlayer
+         PlayerDB.Add(new SinglePlayer
          {
             FirstName = query.Name
          });

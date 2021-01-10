@@ -6,6 +6,6 @@ namespace Application.NetStandard.Player
    {
       public int Id { get; set; }
       public string Name { get; set; }
-      public IEnumerable<PersonPlayerDto> Integrants { get; set; }
+      public IEnumerable<SinglePlayerDto> Integrants { get; set; }
    }
 }

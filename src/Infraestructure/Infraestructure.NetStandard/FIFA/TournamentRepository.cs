@@ -46,14 +46,14 @@ namespace Infraestructure.NetStandard.FIFA
                Local = node.Descendants("Local").Select(equipo => new FIFATeam
                {
                   Name = equipo.Element("Name").Value,
-                  Owner = new PersonPlayer{
+                  Owner = new SinglePlayer{
                      FirstName = equipo.Element("Propietario").Value
                   }
                }).FirstOrDefault(),
                Visitante = node.Descendants("Visitante").Select(equipo => new FIFATeam
                {
                   Name = equipo.Element("Name").Value,
-                  Owner = new PersonPlayer { 
+                  Owner = new SinglePlayer { 
                      FirstName = equipo.Element("Propietario").Value
                   }
                }).FirstOrDefault(),

@@ -6,7 +6,6 @@ namespace Domain.NetStandard.Entities.Players
    {
       public int Id { get; set; }
       public string Name { get; set; }
-      public Statistics Statistics { get; set; }
-      public List<PersonPlayer> Integrants { get; set; }
+      public List<SinglePlayer> Integrants { get; set; }
    }
 }

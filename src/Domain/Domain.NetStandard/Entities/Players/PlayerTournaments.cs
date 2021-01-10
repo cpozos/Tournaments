@@ -7,5 +7,7 @@ namespace Domain.NetStandard.Entities
    {
       public IPlayer Player { get; set; }
       public ICollection<Tournament> Tournaments { get; set; }
+
+      // Results ??
    }
 }
