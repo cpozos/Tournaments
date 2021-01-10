@@ -10,7 +10,7 @@ namespace Infraestructure.NetStandard
 {
    public class PlayerRepository : IPlayerRepository
    {
-      public Task<Response<PlayerDto>> Add(CreatePlayerCommand query)
+      public Task<Response<TeamPlayerDto>> CreateTeamPlayer(CreateTeamPlayerCommand query)
       {
 
          PlayerDB.Add(new PersonPlayer
@@ -18,13 +18,13 @@ namespace Infraestructure.NetStandard
             FirstName = query.Name
          });
 
-         return Task.FromResult(Response.Ok(new PlayerDto
+         return Task.FromResult(Response.Ok(new TeamPlayerDto
          {
             
          }));
       }
 
-      public PlayerDto Get(GetPlayerQuery query)
+      public TeamPlayerDto GetTeamPlayer(GetTeamPlayerQuery query)
       {
          throw new System.NotImplementedException();
       }

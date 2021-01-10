@@ -8,8 +8,8 @@ namespace Application.NetStandard.Repositories
 {
    public interface IPlayerRepository
    {
-      Task<Response<PlayerDto>> Add(CreatePlayerCommand query);
-
-      PlayerDto Get(GetPlayerQuery query);
+      Task<Response<TeamPlayerDto>> CreateTeamPlayer(CreateTeamPlayerCommand query);
+      TeamPlayerDto GetTeamPlayer(GetTeamPlayerQuery query);
+      PersonPlayerDto GetPlayer(GetPersonPlayerQuery query);
    }
 }
