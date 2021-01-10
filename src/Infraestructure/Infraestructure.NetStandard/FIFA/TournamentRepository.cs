@@ -92,7 +92,7 @@ namespace Infraestructure.NetStandard.FIFA
       public TournamentDTO Add(CreateTournamentCommand request)
       {
          // Validates entity
-         if (request == null || request.te.Count == 0)
+         if (request == null)
          {
             return null;
          }

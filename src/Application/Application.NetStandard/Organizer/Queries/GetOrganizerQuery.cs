@@ -8,6 +8,7 @@ namespace Application.NetStandard.Organizer.Queries
 {
    public class GetOrganizerQuery : IRequestWrapper<OrganizerDto>
    {
+      public int Id { get; set; }
    }
 
    public class GetOrganizerQueryHandler : IHandlerWrapper<GetOrganizerQuery, OrganizerDto>

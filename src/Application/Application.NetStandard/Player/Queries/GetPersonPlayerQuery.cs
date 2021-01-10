@@ -21,7 +21,12 @@ namespace Application.NetStandard.Player.Queries
       }
       public Task<Response<PersonPlayerDto>> Handle(GetPersonPlayerQuery request, CancellationToken cancellationToken)
       {
-         var player = _repository.GetPlayer(request);
+         var person = _repository.GetPlayer(request);
+         var player = new PersonPlayerDto
+         {
+            Id = person.Id,
+            Name = $"{person.FirstName}{person.MiddleName}"
+         };
 
          return Task.FromResult(Response.Ok(player));
       }

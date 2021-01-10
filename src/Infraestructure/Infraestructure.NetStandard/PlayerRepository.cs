@@ -2,6 +2,7 @@
 using Application.NetStandard.Player.Command;
 using Application.NetStandard.Player.Queries;
 using Application.NetStandard.Repositories;
+using Domain.NetStandard;
 using Domain.NetStandard.Entities.Players;
 using Domain.NetStandard.Logic;
 using System.Threading.Tasks;
@@ -22,6 +23,12 @@ namespace Infraestructure.NetStandard
          {
             
          }));
+      }
+
+      public Person GetPlayer(GetPersonPlayerQuery query)
+      {
+         var player = PeopleDB.Items.Find(p => p.Id == query.Id);
+         return player;
       }
 
       public TeamPlayerDto GetTeamPlayer(GetTeamPlayerQuery query)

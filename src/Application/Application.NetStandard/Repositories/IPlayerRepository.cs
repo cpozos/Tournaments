@@ -10,6 +10,6 @@ namespace Application.NetStandard.Repositories
    {
       Task<Response<TeamPlayerDto>> CreateTeamPlayer(CreateTeamPlayerCommand query);
       TeamPlayerDto GetTeamPlayer(GetTeamPlayerQuery query);
-      PersonPlayerDto GetPlayer(GetPersonPlayerQuery query);
+      Domain.NetStandard.Person GetPlayer(GetPersonPlayerQuery query);
    }
 }
