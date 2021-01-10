@@ -32,20 +32,24 @@ namespace WebApi
       public void ConfigureServices(IServiceCollection services)
       {
          // Users
-         services.AddScoped<AppLayer.Repositories.IPersonRepository, InfLayer.PersonRepository>();
-         services.AddScoped<AppLayer.Repositories.IOrganizersRepository, InfLayer.OrganizerRepository>();
+         services.AddSingleton<AppLayer.Repositories.IPersonRepository, InfLayer.PersonRepository>();
+         services.AddSingleton<AppLayer.Repositories.IOrganizersRepository, InfLayer.OrganizerRepository>();
 
          // Players
-         services.AddScoped<AppLayer.Repositories.IPlayerRepository, InfLayer.PlayerRepository>();
+         services.AddSingleton<AppLayer.Repositories.IPlayerRepository, InfLayer.PlayerRepository>();
+
+         // Game
+         services.AddSingleton<AppLayer.Repositories.IGameRepository, InfLayer.GameRepository>();
 
          // Tournament
-         services.AddScoped<AppLayer.Repositories.ITournamentRepository, InfLayer.FIFA.TournamentRepository>();
+         services.AddSingleton<AppLayer.Repositories.ITournamentRepository, InfLayer.FIFA.TournamentRepository>();
 
          // FIFA
-         services.AddScoped<AppLayer.Repositories.ITeamRepository, InfLayer.FIFA.FIFATeamRepository>();
+         services.AddSingleton<AppLayer.Repositories.FIFA.ITeamRepository, InfLayer.FIFA.FIFATeamRepository>();
 
+         // Mediators
          services.AddMediatR(typeof(AppLayer.Person.Queries.GetPersonQueryHandler));
-
+         
          services.AddSwaggerGen(doc =>
          {
             doc.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
@@ -59,7 +63,6 @@ namespace WebApi
 
             doc.IncludeXmlComments(xmlPath, true);
          });
-
          services.AddControllers();
       }
 
