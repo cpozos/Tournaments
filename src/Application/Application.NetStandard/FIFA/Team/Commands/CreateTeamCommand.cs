@@ -30,14 +30,14 @@ namespace Application.NetStandard.FIFA.Team.Commands
       }
    }
 
-   public class CreateTeamsCommand : IRequestWrapper<Response<IEnumerable<FIFATeamDTO>>>
+   public class CreateTeamsCommand : IRequestWrapper<IEnumerable<FIFATeamDTO>>
    {
       public IEnumerable<CreateTeamCommand> Commands { get; set; }
    }
 
-   public class CreateTeamsCommandHandler : IHandlerWrapper<CreateTeamsCommand, Response<IEnumerable<FIFATeamDTO>>>
+   public class CreateTeamsCommandHandler : IHandlerWrapper<CreateTeamsCommand, IEnumerable<FIFATeamDTO>>
    {
-      public Task<Response<Response<IEnumerable<FIFATeamDTO>>>> Handle(CreateTeamsCommand request, CancellationToken cancellationToken)
+      public Task<Response<IEnumerable<FIFATeamDTO>>> Handle(CreateTeamsCommand request, CancellationToken cancellationToken)
       {
          throw new System.NotImplementedException();
       }

@@ -1,13 +1,11 @@
-﻿using Domain.NetStandard.Entities.Games;
-using System;
+﻿using Application.NetStandard.Game;
 using System.Collections.Generic;
-using System.Text;
 
 namespace Application.NetStandard.Repositories
 {
    public interface IGameRepository
    {
-      IEnumerable<Game> GetAllGames();
-      Game GetGame(int id);
+      IEnumerable<GameDto> GetAllGames();
+      GameDto GetGame(int id);
    }
 }

@@ -5,7 +5,7 @@ namespace Domain.NetStandard.Entities.Games
 {
    public class Game
    {
-      public uint Id { get; set; }
+      public int Id { get; set; }
       public string Name { get; set; }
       public IEnumerable<Platform> AvailablePlatforms { get; set; }
       public Game()

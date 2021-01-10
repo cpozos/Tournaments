@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace WebApi.Controllers
 {
-   [Route("api/[controller]")]
+   [Route("api/FIFA/[controller]")]
    [ApiController]
-   public class TeamController : CommonController
+   public class TeamsController : CommonController
    {
-      public TeamController(IMediator mediator) : base(mediator) { }
+      public TeamsController(IMediator mediator) : base(mediator) { }
 
       [HttpPost]
       public Task<Response<FIFATeamDTO>> Create([FromBody] CreateTeamCommand request)

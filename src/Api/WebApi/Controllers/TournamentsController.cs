@@ -17,14 +17,10 @@ namespace WebApi.Controllers
       public TournamentsController(IMediator mediator) : base(mediator) { }
 
       [HttpPost]
-      public Task<Response<TournamentDTO>> Create()
+      public Task<Response<TournamentDTO>> Create(CreateTournamentCommand request)
       {
-         return _mediator.Send(new CreateTournamentCommand
-         {
-            Title = "Nuevo torneo"
-         });
+         return _mediator.Send(request);
       }
-
 
       [HttpGet("{id}&{organizerId}")]
       public Task<Response<TournamentDTO>> Get(int id, int organizerId)
