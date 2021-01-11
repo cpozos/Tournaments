@@ -17,6 +17,11 @@ namespace Application.NetStandard.Organizer.Commands
    {
       private readonly IOrganizersRepository _repository;
 
+      public CreateOrganizerCommandHandler(IOrganizersRepository repository)
+      {
+         _repository = repository;
+      }
+
       public Task<Response<OrganizerDto>> Handle(CreateOrganizerCommand request, CancellationToken cancellationToken)
       {
          // Check if there are a lot of integers and the roles

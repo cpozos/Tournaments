@@ -1,4 +1,6 @@
-﻿namespace Domain.NetStandard.Entities.Games.FIFA
+﻿using Domain.NetStandard.Entities.Players;
+
+namespace Domain.NetStandard.Entities.Games.FIFA
 {
    public class FIFATeam : IGameTeam
    {
@@ -45,6 +47,19 @@
 
       //   return TIES;
       //}
-      public bool Equals(FIFATeam other) => other != null && Name == other.Name;
+
+
+      // Just to test
+      public IPlayer Player { get; set; }
+
+
+      public override int GetHashCode()
+         => base.GetHashCode();
+      public override bool Equals(object obj) 
+         => obj != null &&  (obj is FIFATeam otherTeam) && Name == otherTeam.Name;
+      public static bool operator ==(FIFATeam a, FIFATeam b)
+         => a?.Equals(b) == true;
+      public static bool operator !=(FIFATeam a, FIFATeam b)
+         => !(a?.Equals(b) == true);
    }
 }

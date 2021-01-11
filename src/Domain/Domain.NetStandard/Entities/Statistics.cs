@@ -2,6 +2,7 @@
 
 namespace Domain.NetStandard
 {
+   // Remove it ??
    public class Statistics
    {
       public List<Tournament> AllTournaments { get; set; }

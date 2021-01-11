@@ -41,19 +41,20 @@ namespace Infraestructure.NetStandard.FIFA
             .Descendants("Partido")
             .Select(node => new FIFAMatch
             {
+              
                GolesLocal = int.Parse(node.Element("GolesLocal").Value),
                GolesVisitante = int.Parse(node.Element("GolesVisitante").Value),
                Local = node.Descendants("Local").Select(equipo => new FIFATeam
                {
                   Name = equipo.Element("Name").Value,
-                  Owner = new SinglePlayer{
+                  Player = new SinglePlayer{
                      FirstName = equipo.Element("Propietario").Value
                   }
                }).FirstOrDefault(),
                Visitante = node.Descendants("Visitante").Select(equipo => new FIFATeam
                {
                   Name = equipo.Element("Name").Value,
-                  Owner = new SinglePlayer { 
+                  Player = new SinglePlayer { 
                      FirstName = equipo.Element("Propietario").Value
                   }
                }).FirstOrDefault(),

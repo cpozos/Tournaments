@@ -11,7 +11,8 @@ namespace Application.NetStandard.FIFA.Team.Commands
 {
    public class DeleteTeamCommand : IRequestWrapper<Unit>
    {
-      public int Id { get; set; }
+      public int TournamentId { get; set; }
+      public int PlayerId { get; set; }
    }
 
    public class DeleteTeamCommandHandler : IHandlerWrapper<DeleteTeamCommand, Unit>

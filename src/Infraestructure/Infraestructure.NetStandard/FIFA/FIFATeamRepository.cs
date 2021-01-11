@@ -25,16 +25,16 @@ namespace Infraestructure.NetStandard.FIFA
          };
       }
 
-      private void AutoCreateMatches()
+      private void AutoCreateMatches(IEnumerable<FIFATeam> teams, FIFATournament tournament)
       {
-         foreach (var equipo in request.Teams)
+         foreach (var equipo in teams)
          {
             var team = new FIFATeam
             {
                Name = equipo.Name
             };
 
-            foreach (var equipo2 in request.Teams)
+            foreach (var equipo2 in teams)
             {
                var team2 = new FIFATeam
                {
@@ -52,9 +52,9 @@ namespace Infraestructure.NetStandard.FIFA
                      }
                   };
 
-                  if (!instance.Matches.Any(par => par.Equals(partido)))
+                  if (!tournament.Matches.Any(par => par.Equals(partido)))
                   {
-                     instance.Matches.Add(partido);
+                     tournament.Matches.Add(partido);
                   }
                }
             }
@@ -67,7 +67,7 @@ namespace Infraestructure.NetStandard.FIFA
          var team = new FIFATeam
          {
             Name = request.Name,
-            OwnerId = request.PlayerId,
+            PlayerId = request.PlayerId,
             TournamentId = request.TournamentId
          };
 
@@ -75,9 +75,8 @@ namespace Infraestructure.NetStandard.FIFA
 
          return new FIFATeamDTO
          {
-            Id = team.Id
-            , Name = team.Name
-            , OwnerId = team.OwnerId
+            Name = team.Name
+            , OwnerId = team.PlayerId
             , TournamentId = team.TournamentId
          };
       }
@@ -105,7 +104,7 @@ namespace Infraestructure.NetStandard.FIFA
                var team = new FIFATeam
                {
                   Name = item.Name,
-                  OwnerId = item.PlayerId,
+                  PlayerId = item.PlayerId,
                   TournamentId = item.TournamentId
                };
 
@@ -119,7 +118,8 @@ namespace Infraestructure.NetStandard.FIFA
             {
                this.Delete(new DeleteTeamCommand
                {
-                  Id = item.Id
+                  TournamentId = item.TournamentId,
+                  PlayerId = item.PlayerId
                });
             }
 
@@ -129,9 +129,8 @@ namespace Infraestructure.NetStandard.FIFA
          {
             return added.Select(t => new FIFATeamDTO
             {
-               Id = t.Id,
                Name = t.Name,
-               OwnerId = t.OwnerId,
+               OwnerId = t.PlayerId,
                TournamentId = t.TournamentId
             }).ToList();
          }
@@ -141,7 +140,8 @@ namespace Infraestructure.NetStandard.FIFA
       {
          for (int i = 0; i < FIFATeamDB.Items.Count; i++)
          {
-            if (FIFATeamDB.Items[i].Id == request.Id)
+            var team = FIFATeamDB.Items[i];
+            if (team.TournamentId == request.TournamentId && team.PlayerId == request.PlayerId)
             {
                FIFATeamDB.Items.RemoveAt(i);
                break;
