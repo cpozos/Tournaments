@@ -341,3 +341,10 @@ healthchecksdb
 /src/Infraestructure/Infraestructure.NetStandard/FIFA/PartidosGenerados.xml
 
 /tests/*.http
+/tests/Requests/User/GetUsersEP.http
+/tests/Requests/User/CreateUser.http
+/tests/Requests/Tournament/CreateTournament.http
+/tests/Requests/Game/GetGames.http
+/tests/Requests/Game/CreateGame.http
+/tests/Requests/FIFATeam/GetTeams.http
+/tests/Requests/FIFATeam/CreateTeam.http

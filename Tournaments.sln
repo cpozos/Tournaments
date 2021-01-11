@@ -11,15 +11,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Application", "Application"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{6C11D6A5-7D8E-4CA1-AFEC-37C8608A5A4E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application.NetStandard", "src\Application\Application.NetStandard\Application.NetStandard.csproj", "{8FC7715A-7337-4898-B3C0-8EA65C9AC20D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application.NetStandard", "src\Application\Application.NetStandard\Application.NetStandard.csproj", "{8FC7715A-7337-4898-B3C0-8EA65C9AC20D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain.NetStandard", "src\Domain\Domain.NetStandard\Domain.NetStandard.csproj", "{9535EC54-9849-4C61-BE2C-7A34532D8B20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain.NetStandard", "src\Domain\Domain.NetStandard\Domain.NetStandard.csproj", "{9535EC54-9849-4C61-BE2C-7A34532D8B20}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infraestructure", "Infraestructure", "{F0A0643F-61D2-439C-8BD7-27299054AAEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infraestructure.NetStandard", "src\Infraestructure\Infraestructure.NetStandard\Infraestructure.NetStandard.csproj", "{2039BBBF-8FAE-4C5B-8F05-FEB7D5ABDA67}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infraestructure.NetStandard", "src\Infraestructure\Infraestructure.NetStandard\Infraestructure.NetStandard.csproj", "{2039BBBF-8FAE-4C5B-8F05-FEB7D5ABDA67}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi", "src\Api\WebApi\WebApi.csproj", "{A12D66C5-00A5-4999-AA2C-05C0F0DF5C88}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "src\Api\WebApi\WebApi.csproj", "{A12D66C5-00A5-4999-AA2C-05C0F0DF5C88}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Api", "Api", "{0FDDDA06-CDF9-4AF6-A460-BBBAE5FA56F8}"
 EndProject

@@ -25,7 +25,7 @@ namespace WebApi.Controllers
       /// <returns></returns>
       [HttpPost]
       [ProducesResponseType((int)HttpStatusCode.OK, Type = typeof(Response<PersonDto>))]
-      public Task<Response<PersonDto>> Add([FromBody] CreatePersonCommand request)
+      public Task<Response<PersonDto>> Create([FromBody] CreatePersonCommand request)
       {
          return _mediator.Send(request);
       }
