@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Domain.NetStandard.Entities.Organizers
+namespace Domain.NetStandard.Interfaces
 {
    public interface IOrganizer
    {

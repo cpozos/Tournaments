@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Domain.NetStandard.Interfaces;
+using System.Collections.Generic;
 
 namespace Domain.NetStandard.Entities.Organizers
 {

@@ -2,7 +2,6 @@
 {
    public enum OrganizerRol
    {
-      Administrator,
-      Referee
+      Administrator
    }
 }
