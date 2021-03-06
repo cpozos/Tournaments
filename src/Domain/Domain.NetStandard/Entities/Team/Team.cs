@@ -8,5 +8,6 @@ namespace Domain.NetStandard.Entities
       public string Name { get; set; }
       public IEnumerable<TeamOwner> Owners { get; set; }
       public IEnumerable<TeamPlayer> Players { get; set; }
+      public Stadium Stadium { get; set; }
    }
 }

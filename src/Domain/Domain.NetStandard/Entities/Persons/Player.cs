@@ -1,8 +1,7 @@
-﻿using Domain.NetStandard.Interfaces;
-
-namespace Domain.NetStandard.Entities
+﻿namespace Domain.NetStandard.Entities
 {
    public class Player : Person
    {
+      public Position DefaultPosition { get; set; }
    }
 }
